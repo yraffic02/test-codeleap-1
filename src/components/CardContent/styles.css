@@ -1,0 +1,54 @@
+.card-content{
+    width: 100%;
+    height: 19.75rem;
+}
+
+.header-content-card{
+    justify-content: space-between;
+
+    padding: 1.5rem;
+
+    background-color: var(--blue-100);
+    color: #ffff;
+
+    border-radius: 1rem 1rem 0 0;
+}
+
+.header-content-card h1{
+    cursor: pointer;
+}
+
+.icons{
+    gap: 2rem;
+}
+
+.icons img{
+    cursor: pointer;
+}
+
+.body-content-card{
+    width: 100%;
+    height: 100%;
+
+    border-radius:0 0 1rem 1rem;
+    border: 0.06rem solid var(--gray-300);
+
+    gap: 1.5rem;
+
+    padding: 1.5rem;
+}
+
+.header-body-card{
+    justify-content: space-between;
+    color:var(--gray-200) ;
+}
+
+.header-body-card h2, h3{
+    cursor: pointer;
+}
+
+.content-body-card{
+    height: 100%;
+
+    overflow-y: auto;
+}

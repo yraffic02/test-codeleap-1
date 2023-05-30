@@ -1,0 +1,86 @@
+h1 {
+  font-size: var(--font-size-large);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-size-large);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--font-size-regular);
+  font-weight: 400;
+}
+
+h4 {
+  font-size: var(--font-size-regular);
+  font-weight: 400;
+}
+
+p {
+  font-size: var(--font-size-small);
+  font-weight: 700;
+}
+
+span {
+  font-size: var(--font-size-small);
+  font-weight: 400;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-items {
+  align-items: center;
+}
+
+.justify-content {
+  justify-content: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input{
+  max-width: 100%;
+
+  padding: 0.5rem;
+
+  color: var(--gray-100);
+
+  border-radius: 0.5rem;
+  border: 0.06rem solid var(--gray-300);
+}
+
+
+
+.btn{
+  all: unset;
+
+  width: 6.93rem;
+
+  padding: 0.42rem 1.93rem;
+  border-radius: 0.5rem;
+
+  font-size: var(--font-size-small);
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.primary{
+  background-color: var(--blue-100);
+  color: #ffff;
+}

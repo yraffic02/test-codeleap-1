@@ -1,0 +1,10 @@
+
+
+.container-header{
+    width: 100%;
+
+    padding: 1.68rem 2.31rem;
+
+    background-color: var(--blue-100);
+    color: #ffff;
+}

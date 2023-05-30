@@ -1,0 +1,20 @@
+.card-coment{
+    width: 100%;
+    
+    padding: 1.5rem;
+
+    border-radius: 1rem;
+    border: 0.06rem solid var(--gray-200);
+}
+
+.card-coment form{
+    gap: 1.5rem;
+}
+
+.card-coment label{
+    margin-bottom: 0.5rem;
+}
+
+.card-coment textarea{
+    height: 4.6rem;
+}
