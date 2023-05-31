@@ -1,53 +1,54 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
-
-
+import { useDispatch } from 'react-redux';
+import { SET_USERNAME } from '../../redux/types';
 
 export const Signin = () => {
-  const [name, setName] = useState('')
-  const navigation = useNavigate()
+  const [username, setUsername] = useState('');
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
 
-  const handleSubmit = () => {
-    navigation('/home')
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch({ type: SET_USERNAME, payload: username });
+
+    setUsername('');
+    navigation('/home');
+  };
+
+  const handleChange = (e) => {
+    setUsername(e.target.value);
+  };
 
   return (
     <div className='container'>
-
-      <form
-        onSubmit={handleSubmit}
-        className='card-signin flex flex-col'
-      >
+      <form onSubmit={handleSubmit} className='card-signin flex flex-col'>
         <h1>Welcome to CodeLeap network!</h1>
 
-        <label htmlFor='user'>
-          Please enter your username
-        </label>
+        <label htmlFor='user'>Please enter your username</label>
 
         <input
           type='text'
           id='user'
           className='input'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={username}
+          onChange={handleChange}
         />
+
         <div className='card-bottom-btn flex'>
-          {
-            name === '' ?
-              ''
-              :
-              <button
-                className='btn primary'
-                type='submit'
-              >
-                ENTER
-              </button>
-          }
+          {username === '' ? (
+            ''
+          ) : (
+            <button className='btn primary' type='submit'>
+              ENTER
+            </button>
+          )}
         </div>
       </form>
-
     </div>
   );
-}
+};
+
 

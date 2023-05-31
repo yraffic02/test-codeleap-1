@@ -1,6 +1,11 @@
 import './styles.css'
+import { useSelector } from 'react-redux';
 
 export const CardComents = () => {
+    const username = useSelector((state) => state.username);
+    
+
+    
     return (
         <div className="card-coment">
             <form className='flex flex-col'>
