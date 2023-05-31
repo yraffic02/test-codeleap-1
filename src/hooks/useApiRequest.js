@@ -37,7 +37,7 @@ const useApiRequest = () => {
   const post = async (username, title, content) => {
     try {
       const requestData = { username, title, content }
-      await makeRequest('post', '/posts', requestData)
+      await makeRequest('post', '/careers/', requestData)
     } catch (error) {
       setError('Erro ao criar um novo post!')
     }
@@ -46,7 +46,7 @@ const useApiRequest = () => {
   const patch = async (id, title, content) => {
     try {
       const requestData = { title, content }
-      await makeRequest('patch', `/posts/${id}`, requestData)
+      await makeRequest('patch', `/careers/${id}`, requestData)
     } catch (error) {
       setError('Erro ao atualizar o post!')
     }
@@ -54,7 +54,7 @@ const useApiRequest = () => {
 
   const del = async (id) => {
     try {
-      await makeRequest('delete', `/posts/${id}`)
+      await makeRequest('delete', `/careers/${id}`)
     } catch (error) {
       setError('Erro ao excluir o post!')
     }
