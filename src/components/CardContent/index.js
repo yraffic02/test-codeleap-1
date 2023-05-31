@@ -10,6 +10,8 @@ export const CardContent = (
         username
     }
 ) => {
+    
+
     return (
         <div className="card-content flex flex-col">
             <div className='header-content-card flex align-items'>
