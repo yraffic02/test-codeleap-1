@@ -3,6 +3,7 @@ import './styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { SET_USERNAME } from '../../redux/types';
+import { setItem } from '../../hooks/useLocalStore';
 
 export const Signin = () => {
   const [username, setUsername] = useState('');
@@ -15,6 +16,7 @@ export const Signin = () => {
     dispatch({ type: SET_USERNAME, payload: username });
 
     setUsername('');
+    setItem('isLogged', true)
     navigation('/home');
   };
 

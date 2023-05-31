@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
 import { Outlet, Navigate } from "react-router-dom"
+import { getItem } from "./useLocalStore"
 
 export function PrivateRoutes() {
-  const username = useSelector((state) => state.username);
+  const logged = getItem('isLogged')
 
-  return username ? <Outlet /> : <Navigate to="/" />
+  return logged ? <Outlet /> : <Navigate to="/" />
 }
