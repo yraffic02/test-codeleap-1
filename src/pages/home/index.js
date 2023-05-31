@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { CardComents } from '../../components/CardComents';
 import { CardContent } from '../../components/CardContent';
 import { Header } from '../../components/Header';
-import useApiRequest from '../../utils/useApiRequest';
+import useApiRequest from '../../hooks/useApiRequest';
 import './styles.css';
 
 export const Home = () => {
