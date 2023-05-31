@@ -1,6 +1,7 @@
 import './styles.css'
 import delet from '../../assets/delete.svg'
 import edit from '../../assets/edit.svg'
+import { useSelector } from 'react-redux'
 
 export const CardContent = (
     {
@@ -10,7 +11,7 @@ export const CardContent = (
         username
     }
 ) => {
-    
+    const name = useSelector((state) => state.username)
 
     return (
         <div className="card-content flex flex-col">
@@ -18,10 +19,16 @@ export const CardContent = (
                 <h1>
                     {title}
                 </h1>
-                <div className='icons flex align-items'>
-                    <img src={delet} alt='delete icone' />
-                    <img src={edit} alt='edit icone' />
-                </div>
+                {
+                    username === name
+                        ?
+                        <div className='icons flex align-items'>
+                            <img src={delet} alt='delete icone' />
+                            <img src={edit} alt='edit icone' />
+                        </div>
+                        :
+                        ''
+                }
             </div>
             <div className='body-content-card flex flex-col'>
                 <div className='header-body-card flex align-items '>

@@ -5,7 +5,7 @@ import useApiRequest from '../../hooks/useApiRequest'
 
 export const CardComents = () => {
   const username = useSelector((state) => state.username)
-  const { post, getContents } = useApiRequest()
+  const { post } = useApiRequest()
   const [forms, setForms] = useState({
     username: username,
     title: '',
