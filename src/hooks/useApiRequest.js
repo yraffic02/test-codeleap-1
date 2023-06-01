@@ -6,6 +6,7 @@ const useApiRequest = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [nextPageUrl, setNextPageUrl] = useState('')
+  const [reachedEnd, setReachedEnd] = useState(false)
 
   const makeRequest = async (method, endpoint, requestData = null) => {
     try {
@@ -14,6 +15,7 @@ const useApiRequest = () => {
       const response = await api[method](endpoint, requestData)
       return response.data
     } catch (error) {
+      console.log(error)
       alert('error server 500')
     } finally {
       setLoading(false)
@@ -22,14 +24,19 @@ const useApiRequest = () => {
 
   const getContents = async () => {
     try {
-      if (!nextPageUrl) return
+      if (!nextPageUrl || reachedEnd) return 
 
       const responseData = await makeRequest('get', nextPageUrl)
-      const { results, next } = responseData
+      const { results, next, count } = responseData
 
       setData((prevData) => [...prevData, ...results])
       setNextPageUrl(next || '')
+
+      if (data.length + results.length === count) {
+        setReachedEnd(true)
+      }
     } catch (error) {
+      console.log(error)
       alert('error server 500')
     }
   }
@@ -68,7 +75,11 @@ const useApiRequest = () => {
 
         setData(results)
         setNextPageUrl(next || '')
+        if (!next) {
+          setReachedEnd(true)
+        }
       } catch (error) {
+        console.log(error)
         alert('error server 500')
       }
     }
@@ -76,7 +87,7 @@ const useApiRequest = () => {
     fetchData()
   }, [])
 
-  return { data, loading, error, getContents, post, patch, del }
+  return { data, loading, error, getContents, post, patch, del, reachedEnd }
 }
 
 export default useApiRequest
