@@ -38,6 +38,7 @@ export const Home = () => {
           {data.map((item) => (
             <CardContent
               key={item.id}
+              idItem={item.id}
               title={item.title}
               username={item.username}
               datetime={item.created_datetime}

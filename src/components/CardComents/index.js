@@ -55,9 +55,15 @@ export const CardComents = () => {
           />
         </div>
         <div className='card-bottom-btn flex'>
-          <button className='btn primary' type="submit">
-            Create
-          </button>
+          {
+            forms.content === '' 
+            ?
+            ''
+            :
+            <button className='btn primary' type="submit">
+              Create
+            </button>
+          }
         </div>
       </form>
     </div>

@@ -54,7 +54,7 @@ const useApiRequest = () => {
 
   const del = async (id) => {
     try {
-      await makeRequest('delete', `/careers/${id}`)
+      await makeRequest('delete', `/careers/${id}/`)
     } catch (error) {
       alert('error server 500')
     }
