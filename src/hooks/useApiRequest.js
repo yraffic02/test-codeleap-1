@@ -14,7 +14,7 @@ const useApiRequest = () => {
       const response = await api[method](endpoint, requestData)
       return response.data
     } catch (error) {
-      setError('error server 500')
+      alert('error server 500')
     } finally {
       setLoading(false)
     }
@@ -30,7 +30,7 @@ const useApiRequest = () => {
       setData((prevData) => [...prevData, ...results])
       setNextPageUrl(next || '')
     } catch (error) {
-      setError('Erro no servidor!')
+      alert('error server 500')
     }
   }
 
@@ -39,7 +39,7 @@ const useApiRequest = () => {
       const requestData = { username, title, content }
       await makeRequest('post', '/careers/', requestData)
     } catch (error) {
-      setError('Erro ao criar um novo post!')
+      alert('error server 500')
     }
   }
 
@@ -48,7 +48,7 @@ const useApiRequest = () => {
       const requestData = { title, content }
       await makeRequest('patch', `/careers/${id}`, requestData)
     } catch (error) {
-      setError('Erro ao atualizar o post!')
+      alert('error server 500')
     }
   }
 
@@ -56,7 +56,7 @@ const useApiRequest = () => {
     try {
       await makeRequest('delete', `/careers/${id}`)
     } catch (error) {
-      setError('Erro ao excluir o post!')
+      alert('error server 500')
     }
   }
 
@@ -69,7 +69,7 @@ const useApiRequest = () => {
         setData(results)
         setNextPageUrl(next || '')
       } catch (error) {
-        setError('Erro no servidor!')
+        alert('error server 500')
       }
     }
 

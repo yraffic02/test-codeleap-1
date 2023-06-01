@@ -18,11 +18,12 @@ export const CardComents = () => {
     post(forms.username, forms.title, forms.content);
 
     setForms({
+      username,
       title: '',
       content: ''
     })
-
-    window.location.reload();
+    
+   return window.location.reload();
   }
 
   return (
