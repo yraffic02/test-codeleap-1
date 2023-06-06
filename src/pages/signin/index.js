@@ -2,27 +2,25 @@ import React, { useState } from 'react';
 import './styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { SET_USERNAME } from '../../redux/types';
+import { setUsername } from '../../redux/actions/userActions';
 import { setItem } from '../../hooks/useLocalStore';
 
 export const Signin = () => {
-  const [username, setUsername] = useState('');
+  const [user, setUser] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({ type: SET_USERNAME, payload: username });
+    dispatch(setUsername(user));
 
-    setUsername('');
+    
     setItem('isLogged', true)
     navigation('/home');
   };
 
-  const handleChange = (e) => {
-    setUsername(e.target.value);
-  };
+  
 
   return (
     <div className='container'>
@@ -35,12 +33,12 @@ export const Signin = () => {
           type='text'
           id='user'
           className='input'
-          value={username}
-          onChange={handleChange}
+          value={user}
+          onChange={(e)=> setUser(e.target.value)}
         />
 
         <div className='card-bottom-btn flex'>
-          {username === '' ? (
+          {user === '' ? (
             ''
           ) : (
             <button className='btn primary' type='submit'>

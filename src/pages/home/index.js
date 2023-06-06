@@ -3,12 +3,11 @@ import { CardComents } from '../../components/CardComents';
 import { CardContent } from '../../components/CardContent';
 import { Header } from '../../components/Header';
 import useApiRequest from '../../hooks/useApiRequest';
-import { useToggleMOdal } from '../../hooks/useToggle';
 import './styles.css';
 
 export const Home = () => {
   const { data, loading, getContents, reachedEnd } = useApiRequest()
-  const { open } = useToggleMOdal()
+  
 
   useEffect(() => {
     getContents()

@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import './styles.css'
 import { useSelector } from 'react-redux'
 import useApiRequest from '../../hooks/useApiRequest'
+import './styles.css'
 
 export const CardComents = () => {
-  const username = useSelector((state) => state.username)
+  const user = useSelector((state) => state.user)
   const { post } = useApiRequest()
   const [forms, setForms] = useState({
-    username: username,
+    user: user.user,
     title: '',
     content: ''
   })
@@ -15,16 +15,17 @@ export const CardComents = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    post(forms.username, forms.title, forms.content);
+    post(forms.user, forms.title, forms.content);
 
     setForms({
-      username,
+      user,
       title: '',
       content: ''
     })
     
-   return window.location.reload();
+    return window.location.reload();
   }
+ 
 
   return (
     <div className="card-coment">

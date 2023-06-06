@@ -1,1 +1,5 @@
-export const SET_USERNAME = 'SET_USERNAME';
+export const SET_USERNAME = 'SET_USERNAME'
+export const OPEN_MODAL = 'OPEN_MODAL'
+export const CLOSE_MODAL = 'CLOSE_MODAL'
+export const SET_MODAL_TYPE = 'SET_MODAL_TYPE'
+export const SET_MODAL_ID = 'SET_MODAL_ID'
