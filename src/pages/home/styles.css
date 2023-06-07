@@ -13,3 +13,9 @@
   gap: 1.5rem;
   background-color: #ffff;
 }
+
+@media screen and (max-width: 800px) {
+  .home {
+    width: 80%;
+  }
+}
