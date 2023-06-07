@@ -3,6 +3,7 @@ import delet from '../../assets/delete.svg'
 import edit from '../../assets/edit.svg'
 import { setModalId, openModal, setModalType } from '../../redux/actions/modalActions'
 import './styles.css'
+import { formatElapsedTime } from '../../utils/formatTime'
 
 export const CardContent = (
     {
@@ -15,6 +16,7 @@ export const CardContent = (
 ) => {
     const dispatch = useDispatch()
     const name = useSelector((state) => state.user)
+     const time = new Date(datetime)
 
     const handleOpen = (type) => {
         
@@ -49,7 +51,7 @@ export const CardContent = (
                     <div className='header-body-card flex align-items '>
                         <h2>@{username}</h2>
                         <h3>
-                            {datetime}
+                            {formatElapsedTime(time)}
                         </h3>
                     </div>
                     <div className='content-body-card'>
