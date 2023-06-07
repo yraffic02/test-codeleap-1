@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { CardComents } from '../../components/CardComents';
 import { CardContent } from '../../components/CardContent';
 import { Header } from '../../components/Header';
@@ -7,34 +7,33 @@ import './styles.css';
 import BasicModal from '../../components/Modal';
 
 export const Home = () => {
-  const { data, loading, getContents, reachedEnd } = useApiRequest()
-  
+  const { data, loading, getContents, reachedEnd } = useApiRequest();
 
   useEffect(() => {
-    getContents()
-  }, [])
+    getContents();
+  }, [getContents]);
 
-  function handleScroll() {
+  const handleScroll = useCallback(() => {
     if (
       window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight &&
+      document.documentElement.offsetHeight &&
       !loading &&
       !reachedEnd
     ) {
-      getContents()
+      getContents();
     }
-  }
+  }, [loading, reachedEnd, getContents]);
 
   useEffect(() => {
     if (reachedEnd) {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll);
     } else {
-      window.addEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', handleScroll);
     }
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [loading, reachedEnd])
+  }, [handleScroll, reachedEnd]);
 
   return (
     <div className="container">
