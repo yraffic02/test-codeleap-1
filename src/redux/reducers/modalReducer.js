@@ -6,6 +6,8 @@ const initialState = {
   tipo: null,
 }
 
+
+
 const modalReducer = (state = initialState, action) => {
   switch (action.type) {
     case OPEN_MODAL:
@@ -13,8 +15,8 @@ const modalReducer = (state = initialState, action) => {
         ...state,
         isOpen: true,
       }
-    case CLOSE_MODAL:
-      return {
+      case CLOSE_MODAL:
+        return {
         ...state,
         isOpen: false,
       }

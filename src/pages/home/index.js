@@ -4,6 +4,7 @@ import { CardContent } from '../../components/CardContent';
 import { Header } from '../../components/Header';
 import useApiRequest from '../../hooks/useApiRequest';
 import './styles.css';
+import BasicModal from '../../components/Modal';
 
 export const Home = () => {
   const { data, loading, getContents, reachedEnd } = useApiRequest()
@@ -53,6 +54,7 @@ export const Home = () => {
           ))}
         </div>
       </div>
+      <BasicModal />
     </div>
   );
 };

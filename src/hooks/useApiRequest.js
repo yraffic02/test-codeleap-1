@@ -4,7 +4,6 @@ import { api } from '../services/api'
 const useApiRequest = () => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
   const [nextPageUrl, setNextPageUrl] = useState('')
   const [reachedEnd, setReachedEnd] = useState(false)
 
@@ -45,6 +44,7 @@ const useApiRequest = () => {
     try {
       const requestData = { username, title, content }
       await makeRequest('post', '/careers/', requestData)
+      alert('Post created successfully!')
     } catch (error) {
       alert('error server 500')
     }
@@ -54,7 +54,9 @@ const useApiRequest = () => {
     try {
       const requestData = { title, content }
       await makeRequest('patch', `/careers/${id}`, requestData)
+      alert('Post updated successfully!')
     } catch (error) {
+      console.log(error)
       alert('error server 500')
     }
   }
@@ -62,6 +64,7 @@ const useApiRequest = () => {
   const del = async (id) => {
     try {
       await makeRequest('delete', `/careers/${id}/`)
+      alert('Post deleted successfully!')
     } catch (error) {
       alert('error server 500')
     }
@@ -87,7 +90,7 @@ const useApiRequest = () => {
     fetchData()
   }, [])
 
-  return { data, loading, error, getContents, post, patch, del, reachedEnd }
+  return { data, loading, getContents, post, patch, del, reachedEnd }
 }
 
 export default useApiRequest

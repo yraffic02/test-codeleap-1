@@ -1,32 +1,49 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import * as React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import useApiRequest from '../../hooks/useApiRequest';
+import { closeModal } from '../../redux/actions/modalActions';
 import { styleEdit } from './style';
-import { useSelector } from 'react-redux';
+
 
 export default function BasicModal() {
-  const isOpen = useSelector(state => state.modal.isOpen)
+  const open = useSelector(state => state.modal.isOpen)
   const modalType = useSelector(state => state.modal.tipo)
   const modalId = useSelector(state => state.modal.id)
-  const { del } = useApiRequest()
-
-
-
-
+  const dispatch = useDispatch()
+  const { del, patch } = useApiRequest()
+  const [ forms, setForms] = useState({
+    title: '',
+    content: ''
+  })
+  
   const handleDel = (id) => {
-    del(id)
-    alert("content removed")
+    del(modalId)
+    
+    setTimeout(() => {
+      window.location.reload()
+    }, 200)
+    dispatch(closeModal())
+  }
 
+  const handleEdit = async() =>{
+    patch(modalId, forms.title, forms.content)
+    dispatch(closeModal())
 
+    window.location.reload()
+  }
+
+  const handleClose = () => {
+    dispatch(closeModal())
   }
 
   return (
     <div>
       <Modal
-        open={isOpen}
-      /* onClose={()=> handleClose()} */
+        open={open}
+        onClose={handleClose}
       >
         <Box sx={{ ...styleEdit }}>
           {
@@ -43,14 +60,14 @@ export default function BasicModal() {
                   }}>
                   <Button
                     variant="outlined"
-                  /* onClick={()=> handleClose()} */
+                    onClick={handleClose}
                   >
                     Cancelar
                   </Button>
                   <Button
                     variant="contained"
                     color="error"
-                  /* onClick={handleDel} */
+                    onClick={handleDel}
                   >
                     Deletar
                   </Button>
@@ -69,8 +86,9 @@ export default function BasicModal() {
                   type="text"
                   className="input"
                   placeholder='Hello world'
+                  value={forms.title}
+                  onChange={(e) => setForms({ ...forms, title: e.target.value })}
                 />
-
 
                 <label>
                   Content
@@ -79,6 +97,8 @@ export default function BasicModal() {
                   type="text"
                   className="input"
                   placeholder='Content Here'
+                  value={forms.content}
+                  onChange={(e) => setForms({ ...forms, content: e.target.value })}
                 />
 
                 <div
@@ -90,7 +110,7 @@ export default function BasicModal() {
                   }}>
                   <Button
                     variant="outlined"
-                  /* onClick={()=> handleClose()} */
+                    onClick={handleClose}
                   >
                     Cancelar
                   </Button>
@@ -99,6 +119,7 @@ export default function BasicModal() {
                     sx={{
                       bgcolor: "#47B960"
                     }}
+                    onClick={handleEdit}
                   >
                     Save
                   </Button>

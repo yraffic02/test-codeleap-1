@@ -17,6 +17,7 @@ export const CardComents = () => {
 
     post(forms.user, forms.title, forms.content);
 
+    
     setForms({
       user,
       title: '',

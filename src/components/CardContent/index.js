@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import delet from '../../assets/delete.svg'
 import edit from '../../assets/edit.svg'
-import BasicModal from '../Modal'
+import { setModalId, openModal, setModalType } from '../../redux/actions/modalActions'
 import './styles.css'
 
 export const CardContent = (
@@ -16,6 +16,12 @@ export const CardContent = (
     const dispatch = useDispatch()
     const name = useSelector((state) => state.user)
 
+    const handleOpen = (type) => {
+        
+        dispatch(openModal())
+        dispatch(setModalType(type))
+        dispatch(setModalId(idItem))
+      }
     return (
             <div className="card-content flex flex-col">
                 <div className='header-content-card flex align-items'>
@@ -28,9 +34,12 @@ export const CardContent = (
                             <div className='icons flex align-items'>
                                 <img
                                     src={delet} alt='delete icone'
-                                /* onClick={() => handleOpen(idItem, 'delete')} */
+                                    onClick={() => handleOpen('delete')}
                                 />
-                                <img src={edit} alt='edit icone' />
+                                <img 
+                                    src={edit} alt='edit icone'
+                                    onClick={() => handleOpen('edit')} 
+                                />      
                             </div>
                             :
                             ''
