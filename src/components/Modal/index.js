@@ -55,7 +55,7 @@ export default function BasicModal() {
                   style={{
                     display: 'flex',
                     justifyContent: 'flex-end',
-                    marginTop: '16px',
+                    marginTop: '1rem',
                     gap: '2rem'
                   }}>
                   <Button
